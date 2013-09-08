@@ -1,0 +1,2 @@
+serviceClass: org.visico.revitaplan.revitaassist.client.gui.service.LoginService
+path: C39890E73FBF7EE26066A3D57D49DBCE.gwt.rpc

@@ -35,7 +35,7 @@ public class LoginWidget extends DataComposite implements ClickHandler{
 		mainPanel.setStyleName("boundedVPanel");
 		
 		Grid login_grd = new Grid(2,2);
-		login_grd.setText(0, 0, constants.name());
+		login_grd.setText(0, 0, constants.email());
 		login_grd.setWidget(0, 1, name_tb);
 		
 		login_grd.setText(1, 0, constants.pass());
@@ -53,7 +53,7 @@ public class LoginWidget extends DataComposite implements ClickHandler{
 	@Override
 	public void onClick(ClickEvent event) {
 		data.setPassword(pass_tb.getValue());
-		data.setUser(name_tb.getValue());
+		data.setEmail(name_tb.getValue());
 		
 		AsyncCallback<LoginData> callback = new AsyncCallback<LoginData>()
 		{

@@ -1,8 +1,7 @@
 *.class
 
 # Package Files #
-*.jar
-*.war
+
 
 # gwt caches and compiled units #
 war/gwt_bree/
@@ -23,3 +22,4 @@ war/WEB-INF/classes/
 # Package Files #
 *.war
 *.ear
+/target

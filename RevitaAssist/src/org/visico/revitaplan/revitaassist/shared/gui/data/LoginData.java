@@ -9,7 +9,7 @@ public class LoginData implements Serializable
 	 */
 	private static final long serialVersionUID = 2149545519189020474L;
 	
-	public String user = "Joe Doe";
+	public String email = "JoeDoe@doe.com";
 	public String password = "pass";
 	
 	private boolean loggedin = false;
@@ -24,12 +24,12 @@ public class LoginData implements Serializable
 		this.loggedin = loggedin;
 	}
 
-	public String getUser() {
-		return user;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUser(String user) {
-		this.user = user;
+	public void setEmail(String user) {
+		this.email = user;
 	}
 
 	public String getPassword() {

@@ -1,7 +1,10 @@
 package org.visico.revitaplan.revitaassist.client;
 
 import org.visico.revitaplan.revitaassist.client.gui.composite.LoginWidget;
+import org.visico.revitaplan.revitaassist.client.gui.composite.ProjectInfoWidget;
+import org.visico.revitaplan.revitaassist.client.gui.mediator.ProjectMediator;
 import org.visico.revitaplan.revitaassist.shared.FieldVerifier;
+import org.visico.revitaplan.revitaassist.shared.gui.data.ProjectData;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
@@ -28,6 +31,15 @@ public class RevitaAssist implements EntryPoint {
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad() {
-		RootPanel.get().add(new LoginWidget());
+		VerticalPanel panel = new VerticalPanel();
+		panel.add(new LoginWidget());
+		
+		ProjectData pd = new ProjectData();
+		ProjectMediator pm = new ProjectMediator(pd);
+		ProjectInfoWidget pw = new ProjectInfoWidget();
+		pm.addProjectInfoWidget(pw);
+		panel.add(pw);
+		
+		RootPanel.get().add(panel);
 	}
 }

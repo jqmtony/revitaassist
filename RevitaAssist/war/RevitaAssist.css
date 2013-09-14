@@ -85,3 +85,8 @@ h1 {
 	font-style: italic;
    	margin-bottom: 2px;
 }
+
+.titleLabel {
+	font-style: italic;
+	padding-bottom: 5px;
+}

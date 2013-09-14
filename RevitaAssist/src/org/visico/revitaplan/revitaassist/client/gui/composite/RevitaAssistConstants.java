@@ -58,4 +58,7 @@ public interface RevitaAssistConstants extends Constants {
 	  
 	  @DefaultStringValue("Cancel")
 	  String cancel();
+	  
+	  @DefaultStringValue("Select Project")
+	  String selectProject();
 }

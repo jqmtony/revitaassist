@@ -35,4 +35,27 @@ public interface RevitaAssistConstants extends Constants {
 	  @DefaultStringValue("Assess Maturity")
 	  String assessMaturity();
 	  
+	  @DefaultStringValue("Project Name")
+	  String projectName();
+	  
+	  @DefaultStringValue("Set Stage Project is in:")
+	  String setStage();
+	  
+	  @DefaultStringValue("Initiation Stage	")
+	  String initiationStage();
+	  
+	  @DefaultStringValue("Conception Stage	")
+	  String conceptionStage();
+	  
+	  @DefaultStringValue("Specification Stage	")
+	  String specificationStage();
+	  
+	  @DefaultStringValue("Project Management Stage	")
+	  String projectmgtStage();
+	  
+	  @DefaultStringValue("Project Description	")
+	  String projectDescription();
+	  
+	  @DefaultStringValue("Cancel")
+	  String cancel();
 }

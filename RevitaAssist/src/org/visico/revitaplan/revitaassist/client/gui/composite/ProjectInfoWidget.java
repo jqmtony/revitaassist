@@ -5,6 +5,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
@@ -85,7 +86,10 @@ public class ProjectInfoWidget extends DataComposite implements ClickHandler {
 	public void onClick(ClickEvent event) {
 		if (event.getSource() == addProject_btn)
 		{
-			Window.alert("TODO: Add Project Panel");
+			DialogBox add_dlg = new DialogBox();
+			add_dlg.add(new AddProjectWidget());
+			add_dlg.show();
+			
 		}
 		else if (event.getSource() == deleteProject_btn)
 		{

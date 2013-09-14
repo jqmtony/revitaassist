@@ -32,13 +32,16 @@ public class RevitaAssist implements EntryPoint {
 	 */
 	public void onModuleLoad() {
 		VerticalPanel panel = new VerticalPanel();
+		
 		panel.add(new LoginWidget());
 		
 		ProjectData pd = new ProjectData();
-		ProjectMediator pm = new ProjectMediator(pd);
+		ProjectMediator pm = ProjectMediator.getInstance();
 		ProjectInfoWidget pw = new ProjectInfoWidget();
 		pm.addProjectInfoWidget(pw);
 		panel.add(pw);
+		
+		
 		
 		RootPanel.get().add(panel);
 	}

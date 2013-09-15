@@ -1,5 +1,7 @@
 package org.visico.revitaplan.revitaassist.client.gui.composite;
 
+import org.visico.revitaplan.revitaassist.client.gui.mediator.ProjectListMediator;
+
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -80,7 +82,8 @@ public class AddProjectWidget extends DataComposite implements ClickHandler {
 	public void onClick(ClickEvent event) {
 		if (event.getSource() == add_btn)
 		{
-		
+			ProjectListMediator.getInstance().addProject();
+			ProjectListMediator.getInstance().removeAddProjectWidget();
 		}
 		else if (event.getSource() == cancel_btn)
 		{
@@ -89,7 +92,31 @@ public class AddProjectWidget extends DataComposite implements ClickHandler {
 				DialogBox parent = (DialogBox)(this.getParent().getParent());
 				parent.hide();
 			}
+			ProjectListMediator.getInstance().removeAddProjectWidget();
 		}
+	}
+
+	public String getProjectName() {
+		return name_tbx.getText();
+	}
+
+	public String getDescription() {
+		return description_tbx.getText();
+	}
+
+	public String getStage() {
+		String stage = "";
+		
+		if (initiationStage_rbt.getValue())
+			stage = constants.initiationStage();
+		else if (conceptionStage_rbt.getValue())
+			stage = constants.conceptionStage();
+		else if (specificationStage_rbt.getValue())
+			stage = constants.specificationStage();
+		else if (projectmgtStage_rbt.getValue())
+			stage = constants.projectmgtStage();
+		
+		return stage;
 	}
 
 }

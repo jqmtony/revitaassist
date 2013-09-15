@@ -26,6 +26,16 @@
     <url-pattern>/revitaassist/login</url-pattern>
   </servlet-mapping>
   
+   <servlet>
+    <servlet-name>projectListServlet</servlet-name>
+    <servlet-class>org.visico.revitaplan.revitaassist.server.gui.serviceimpl.ProjectListServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>projectListServlet</servlet-name>
+    <url-pattern>/revitaassist/projectList</url-pattern>
+  </servlet-mapping>
+  
   <!-- Default page to serve -->
   <welcome-file-list>
     <welcome-file>RevitaAssist.html</welcome-file>

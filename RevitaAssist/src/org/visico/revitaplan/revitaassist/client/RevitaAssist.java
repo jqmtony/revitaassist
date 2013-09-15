@@ -3,6 +3,7 @@ package org.visico.revitaplan.revitaassist.client;
 import org.visico.revitaplan.revitaassist.client.gui.composite.LoginWidget;
 import org.visico.revitaplan.revitaassist.client.gui.composite.ProjectInfoWidget;
 import org.visico.revitaplan.revitaassist.client.gui.composite.ProjectListWidget;
+import org.visico.revitaplan.revitaassist.client.gui.mediator.ProjectListMediator;
 import org.visico.revitaplan.revitaassist.client.gui.mediator.ProjectSiteMediator;
 import org.visico.revitaplan.revitaassist.shared.FieldVerifier;
 import org.visico.revitaplan.revitaassist.shared.gui.data.ProjectData;
@@ -33,31 +34,8 @@ public class RevitaAssist implements EntryPoint {
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad() {
-		VerticalPanel panel = new VerticalPanel();
-		
-		//panel.add(new LoginWidget());
-		
-		/*ProjectData pd = new ProjectData();
-		ProjectSiteMediator pm = ProjectSiteMediator.getInstance();
-		ProjectInfoWidget pw = new ProjectInfoWidget();
-		pm.addProjectInfoWidget(pw);
-		panel.add(pw);
-		*/
-		ProjectListWidget list_wdg = new ProjectListWidget();
-		
-		for (int i=0; i<5; i++)
-		{
-			ProjectInfoWidget w = new ProjectInfoWidget();
-			w.setName("project " + i);
-			w.setStage("Initiation");
-			w.setDescription("stupid test");
-			
-			list_wdg.addProjectInfoWidget(w);
-		}
-		
-		panel.add(list_wdg);
-		
-		//RootPanel.get().add(panel);
-		RootPanel.get("content").add(panel);
+		ProjectListMediator mediator = ProjectListMediator.getInstance();
+		ProjectListWidget plw = new ProjectListWidget();
+		mediator.setProjectListWidget(plw);
 	}
 }

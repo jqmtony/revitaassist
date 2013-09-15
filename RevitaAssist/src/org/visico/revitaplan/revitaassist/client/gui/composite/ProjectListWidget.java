@@ -1,5 +1,7 @@
 package org.visico.revitaplan.revitaassist.client.gui.composite;
 
+import org.visico.revitaplan.revitaassist.client.gui.mediator.ProjectListMediator;
+
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -77,7 +79,9 @@ public class ProjectListWidget extends DataComposite implements ClickHandler {
 		else if (event.getSource() == add_btn)
 		{
 			DialogBox add_dlg = new DialogBox();
-			add_dlg.add(new AddProjectWidget());
+			AddProjectWidget addProjectWidget = new AddProjectWidget();
+			ProjectListMediator.getInstance().setAddProjectWidget(addProjectWidget);
+			add_dlg.add(addProjectWidget);
 			add_dlg.show();
 		}
 	}

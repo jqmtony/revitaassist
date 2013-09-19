@@ -22,7 +22,7 @@ public class ProjectListWidget extends DataComposite implements ClickHandler {
 	
 	private VerticalPanel mainPanel = new VerticalPanel();
 	
-	private Grid projectGrid = new Grid(1,1);
+	private Grid projectGrid = new Grid(0,1);
 	private Button add_btn = new Button(constants.addProject());
 	private Button select_btn = new Button(constants.selectProject());
 	private Button delete_btn = new Button(constants.deleteProject());
@@ -100,9 +100,9 @@ public class ProjectListWidget extends DataComposite implements ClickHandler {
 	private void styleRow(int row, boolean selected) {
 	    if (row != -1) {
 	      if (selected) {
-	        projectGrid.getRowFormatter().addStyleName(row, "mail-SelectedRow");
+	        projectGrid.getWidget(row, 0).setStyleName("projectInfoPanel-selectedPanel");
 	      } else {
-	        projectGrid.getRowFormatter().removeStyleName(row, "mail-SelectedRow");
+	    	  projectGrid.getWidget(row, 0).setStyleName("projectInfoPanel");
 	      }
 	    }
 	  }

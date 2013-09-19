@@ -26,16 +26,21 @@ public class ProjectInfoWidget extends DataComposite implements ClickHandler {
 	public ProjectInfoWidget()
 	{
 		name_lbl = new Label();
+		
 		stage_lbl = new Label();
 		description_lbl = new Label();
 		
-		labelPanel.setStyleName("boundedVPanel");
+		labelPanel.setStyleName("projectInfoPanel");
 		labelPanel.setHeight("7em");
 		labelPanel.setWidth("46em");
 		labelPanel.add(name_lbl);
 		labelPanel.add(stage_lbl);
 		labelPanel.add(description_lbl);
-		name_lbl.addStyleName("captionLabel");
+		
+		name_lbl.addStyleName("projectInfoTitle");
+		stage_lbl.addStyleName("projectInfoStage");
+		description_lbl.addStyleName("noteSnippetContent");
+		
 		mainPanel.setWidget(0, 0, labelPanel);
 		initWidget(mainPanel);
 	}
@@ -55,6 +60,7 @@ public class ProjectInfoWidget extends DataComposite implements ClickHandler {
 		
 	}
 
+	
 	@Override
 	public void onClick(ClickEvent event) {
 		

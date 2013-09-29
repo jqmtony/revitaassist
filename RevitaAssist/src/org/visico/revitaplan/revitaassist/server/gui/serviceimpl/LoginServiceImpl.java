@@ -1,5 +1,7 @@
 package org.visico.revitaplan.revitaassist.server.gui.serviceimpl;
 
+import javax.servlet.http.HttpSession;
+
 import org.visico.revitaplan.revitaassist.client.gui.service.LoginService;
 import org.visico.revitaplan.revitaassist.shared.gui.data.LoginData;
 import org.visico.userdb.dao.UserDao;
@@ -16,7 +18,12 @@ public class LoginServiceImpl extends RemoteServiceServlet implements LoginServi
 		User u = userdao.findByEmail(data.getEmail());
 		
 		if (u != null && u.getPassword().equals(data.getPassword()))
+		{
 			data.setLoggedin(true);
+			HttpSession session = this.getThreadLocalRequest().getSession(true);
+			session.setAttribute("user", data.getEmail());
+			data.setSessionId(session.getId());
+		}
 		
 		return data;
 	}

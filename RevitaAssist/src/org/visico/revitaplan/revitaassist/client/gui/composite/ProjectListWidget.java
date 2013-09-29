@@ -20,6 +20,8 @@ public class ProjectListWidget extends DataComposite implements ClickHandler {
 
 	RevitaAssistConstants constants = GWT.create(RevitaAssistConstants.class);
 	
+	private ProjectListMediator mediator;
+	
 	private VerticalPanel mainPanel = new VerticalPanel();
 	
 	private Grid projectGrid = new Grid(0,1);
@@ -29,8 +31,10 @@ public class ProjectListWidget extends DataComposite implements ClickHandler {
 	
 	private int selectedRow = -1;
 	
-	public ProjectListWidget()
+	public ProjectListWidget(ProjectListMediator mediator)
 	{
+		this.mediator = mediator;
+		
 		mainPanel.setStyleName("centerPanel");
 		ScrollPanel scroller = new ScrollPanel();
 		scroller.setStyleName("boundedVPanel");
@@ -79,8 +83,8 @@ public class ProjectListWidget extends DataComposite implements ClickHandler {
 		else if (event.getSource() == add_btn)
 		{
 			DialogBox add_dlg = new DialogBox();
-			AddProjectWidget addProjectWidget = new AddProjectWidget();
-			ProjectListMediator.getInstance().setAddProjectWidget(addProjectWidget);
+			AddProjectWidget addProjectWidget = new AddProjectWidget(mediator);
+			mediator.setAddProjectWidget(addProjectWidget);
 			add_dlg.add(addProjectWidget);
 			add_dlg.show();
 		}

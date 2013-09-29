@@ -3,6 +3,7 @@ package org.visico.revitaplan.revitaassist.client;
 import org.visico.revitaplan.revitaassist.client.gui.composite.LoginWidget;
 import org.visico.revitaplan.revitaassist.client.gui.composite.ProjectInfoWidget;
 import org.visico.revitaplan.revitaassist.client.gui.composite.ProjectListWidget;
+import org.visico.revitaplan.revitaassist.client.gui.mediator.AppControlMediator;
 import org.visico.revitaplan.revitaassist.client.gui.mediator.ProjectListMediator;
 import org.visico.revitaplan.revitaassist.client.gui.mediator.ProjectSiteMediator;
 import org.visico.revitaplan.revitaassist.shared.FieldVerifier;
@@ -34,8 +35,8 @@ public class RevitaAssist implements EntryPoint {
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad() {
-		ProjectListMediator mediator = ProjectListMediator.getInstance();
-		ProjectListWidget plw = new ProjectListWidget();
-		mediator.setProjectListWidget(plw);
+		
+		AppControlMediator appControl= AppControlMediator.getInstance();
+		appControl.setMode(AppControlMediator.MODE.LOGIN);
 	}
 }

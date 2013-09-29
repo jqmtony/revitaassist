@@ -1,5 +1,6 @@
 package org.visico.revitaplan.revitaassist.client.gui.composite;
 
+import org.visico.revitaplan.revitaassist.client.gui.mediator.AppControlMediator;
 import org.visico.revitaplan.revitaassist.client.gui.service.LoginService;
 import org.visico.revitaplan.revitaassist.client.gui.service.LoginServiceAsync;
 import org.visico.revitaplan.revitaassist.shared.gui.data.LoginData;
@@ -28,6 +29,7 @@ public class LoginWidget extends DataComposite implements ClickHandler{
 	
 	public LoginWidget()
 	{
+		
 		data = new LoginData();
 		constants = GWT.create(RevitaAssistConstants.class);
 		
@@ -35,19 +37,24 @@ public class LoginWidget extends DataComposite implements ClickHandler{
 		mainPanel.setStyleName("boundedVPanel");
 		
 		Grid login_grd = new Grid(2,2);
+		login_grd.setStyleName("StandardTable");
 		login_grd.setText(0, 0, constants.email());
+		name_tb.setWidth("15em");
 		login_grd.setWidget(0, 1, name_tb);
 		
 		login_grd.setText(1, 0, constants.pass());
+		pass_tb.setWidth("15em");
 		login_grd.setWidget(1, 1, pass_tb);
 		mainPanel.add(login_grd);
 		
 		login_btn.setText(constants.login());
-		login_btn.setSize("19em", "2em");
+		login_btn.setStyleName("normalButton");
 		login_btn.addClickHandler(this);
 		mainPanel.add(login_btn);
 		
 		initWidget(mainPanel);
+		
+		
 	}
 
 	@Override
@@ -68,7 +75,8 @@ public class LoginWidget extends DataComposite implements ClickHandler{
 				data = result;
 				if (data.loginSuccess())
 				{
-					Window.alert(constants.loginsuccess());
+					if (data.getSessionId() != null)
+						AppControlMediator.getInstance().startSession(data.getSessionId());
 				}
 				else
 				{

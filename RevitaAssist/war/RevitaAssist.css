@@ -58,7 +58,8 @@ table
 position: absolute;
 background-image: url('topbanner.gif');
 background-repeat: no-repeat;
-left: 35%;
+background-position: center;
+left: 0;
 top: 0;
 width: 98%;
 height: 30%;
@@ -66,25 +67,35 @@ margin: 1%;
 align: center;
 }
 
+#login {
+	position: absolute;
+	background-color: #E31B23; 
+	top: 30%;
+	height: 5%;
+	left: 0;
+	width: 100%;
+	
+}
 #bottombanner {
 position: absolute;
-left: 26%;
+
+left: 0;
 top: 94%;
-width: 98%;
+width: 100%;
 height: 10%;
 margin: 2%;
 align: center;
 }
 
 #content {
-position: absolute;
-left: 0;
-width: 100%;
-top: 25%;
-height: 66%;
-margin: 1%;
-font-size: 12px;
-overflow: auto;
+	position: absolute;
+	left: 0;
+	width: 100%;
+	top: 35%;
+	height: 66%;
+	margin: 1%;
+	font-size: 12px;
+	overflow: auto;
 }
 
 
@@ -155,8 +166,8 @@ h1 {
 
 .normalButton
 {
-	width: 95%;
-	text-align: left;
+	width: 100%;
+	margin: auto;
 }
 
 /** Set ids using widget.getElement().setId("idOfElement") */
@@ -223,4 +234,25 @@ overflow: hidden;
 .projectInfoPanel-selectedPanel {
 background: #ecf0f3;
 color: #1d1d1d;
+}
+
+.loginPanel {
+	position: relative;
+	margin: auto;
+}
+
+.StandardTable 
+{
+  border: 1px solid #e3e3e3;
+	background-color: #f2f2f2;
+        width: 100%;
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-spacing: 10px;
+}
+
+.StandardTable, th, td
+{
+	border: 10px;
 }

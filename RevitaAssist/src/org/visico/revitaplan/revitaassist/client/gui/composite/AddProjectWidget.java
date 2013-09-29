@@ -18,6 +18,8 @@ public class AddProjectWidget extends DataComposite implements ClickHandler {
 
 	RevitaAssistConstants constants = GWT.create(RevitaAssistConstants.class);
 	
+	ProjectListMediator mediator;
+	
 	VerticalPanel mainPanel = new VerticalPanel();
 	TextBox name_tbx = new TextBox();
 	TextArea description_tbx = new TextArea();
@@ -30,8 +32,10 @@ public class AddProjectWidget extends DataComposite implements ClickHandler {
 	Button add_btn; 
 	Button cancel_btn; 
 	
-	public AddProjectWidget()
+	public AddProjectWidget(ProjectListMediator mediator)
 	{
+		this.mediator = mediator;
+		
 		HorizontalPanel name_pnl = new HorizontalPanel();
 		name_pnl.setStyleName("boundedVPanel");
 		name_pnl.add(new Label(constants.projectName()));
@@ -82,8 +86,8 @@ public class AddProjectWidget extends DataComposite implements ClickHandler {
 	public void onClick(ClickEvent event) {
 		if (event.getSource() == add_btn)
 		{
-			ProjectListMediator.getInstance().addProject();
-			ProjectListMediator.getInstance().removeAddProjectWidget();
+			mediator.addProject();
+			mediator.removeAddProjectWidget();
 		}
 		else if (event.getSource() == cancel_btn)
 		{
@@ -92,7 +96,7 @@ public class AddProjectWidget extends DataComposite implements ClickHandler {
 				DialogBox parent = (DialogBox)(this.getParent().getParent());
 				parent.hide();
 			}
-			ProjectListMediator.getInstance().removeAddProjectWidget();
+			mediator.removeAddProjectWidget();
 		}
 	}
 

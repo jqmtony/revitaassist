@@ -16,15 +16,6 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class ProjectListMediator {
 
-	private static ProjectListMediator instance;
-	
-	
-	public static ProjectListMediator getInstance()
-	{
-		if (instance == null)
-			instance = new ProjectListMediator();
-		return instance;
-	}
 	
 	private ProjectListServiceAsync service = GWT.create(ProjectListService.class);
 	
@@ -32,7 +23,7 @@ public class ProjectListMediator {
 	private ProjectListWidget projectListWidget = null;
 	
 	
-	private ProjectListMediator()
+	public ProjectListMediator(String user)
 	{
 		
 	}

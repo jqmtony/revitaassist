@@ -1,5 +1,7 @@
 package org.visico.revitaplan.revitaassist.client.gui.composite;
 
+import org.visico.revitaplan.revitaassist.client.gui.mediator.ProjectListMediator;
+
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -12,6 +14,8 @@ public class ProjectButtonsWidget extends DataComposite implements ClickHandler 
 
 	RevitaAssistConstants constants = GWT.create(RevitaAssistConstants.class);
 	
+	ProjectListMediator mediator;
+	
 	Button addProject_btn = new Button(constants.addProject()); 
 	Button deleteProject_btn = new Button(constants.deleteProject());
 	Button changeStage_btn = new Button(constants.changeStage());
@@ -20,8 +24,10 @@ public class ProjectButtonsWidget extends DataComposite implements ClickHandler 
 	
 	VerticalPanel btnPanel = new VerticalPanel();
 	
-	public void ProjectsButtonsWidget()
+	public void ProjectsButtonsWidget(ProjectListMediator mediator)
 	{
+		this.mediator = mediator;
+		
 		btnPanel.setStyleName("boundedVPanel");
 		btnPanel.setSize("10em", "12em");
 		btnPanel.add(addProject_btn);
@@ -47,7 +53,7 @@ public class ProjectButtonsWidget extends DataComposite implements ClickHandler 
 		if (event.getSource() == addProject_btn)
 		{
 			DialogBox add_dlg = new DialogBox();
-			add_dlg.add(new AddProjectWidget());
+			add_dlg.add(new AddProjectWidget(mediator));
 			add_dlg.show();
 			
 		}

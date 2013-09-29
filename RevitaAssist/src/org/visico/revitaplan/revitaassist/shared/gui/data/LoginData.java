@@ -9,8 +9,9 @@ public class LoginData implements Serializable
 	 */
 	private static final long serialVersionUID = 2149545519189020474L;
 	
-	public String email = "JoeDoe@doe.com";
-	public String password = "pass";
+	private String email = "JoeDoe@doe.com";
+	private String password = "pass";
+	private String sessionId = null;
 	
 	private boolean loggedin = false;
 	
@@ -42,6 +43,15 @@ public class LoginData implements Serializable
 
 	public boolean loginSuccess() {
 		return loggedin;
+	}
+
+	public void setSessionId(String id) {
+		sessionId = id;
+		
+	}
+	
+	public String getSessionId() {
+		return sessionId;
 	}
 	
 	

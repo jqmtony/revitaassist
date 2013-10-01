@@ -31,8 +31,7 @@ public class LoginMediator {
 		panel.setStyleName("loginPanel");
 		panel.add(loginWidget);
 		RootPanel.get("content").clear();
-		RootPanel.get("content").add(panel);
-		
+		RootPanel.get("content").add(panel);	
 	}
 	
 	

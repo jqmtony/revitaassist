@@ -2,6 +2,11 @@ package org.visico.revitaplan.revitaassist.client.gui.mediator;
 
 import org.visico.revitaplan.revitaassist.client.gui.composite.LoginWidget;
 import org.visico.revitaplan.revitaassist.client.gui.composite.ProjectListWidget;
+import org.visico.revitaplan.revitaassist.client.gui.composite.UserWidget;
+import org.visico.revitaplan.revitaassist.shared.gui.data.LoginData;
+
+import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class AppControlMediator {
 	
@@ -27,25 +32,10 @@ public class AppControlMediator {
 	}
 	
 	
-	private String sessionId;
+	private LoginData loginData;
 	
 	
-	public void setMode(MODE newMode)
-	{
-		if (newMode == MODE.LOGIN)
-		{
-			drawLogin();
-		}
-		else if (newMode == MODE.PROJECTLIST)
-		{
-			drawProjectList();
-		}
-		else if (newMode == MODE.PROJECT)
-		{
-			drawProject();
-		}
-	}
-
+	
 
 	private void drawProject() {
 		// TODO Auto-generated method stub
@@ -65,15 +55,35 @@ public class AppControlMediator {
 		ProjectListMediator mediator = new ProjectListMediator("Dummy");
 		ProjectListWidget plw = new ProjectListWidget(mediator);
 		mediator.setProjectListWidget(plw);
-	}
-
-
-
-
-
-	public void startSession(String sessionId) {
-		this.sessionId = sessionId;
-		drawProjectList();
 		
 	}
+
+	private void drawUserWidget() {
+		UserWidget widget = new UserWidget(loginData, this);
+		VerticalPanel panel = new VerticalPanel();
+		panel.setStyleName("vcenterPanelRight");
+		panel.add(widget);
+		RootPanel.get("login").clear();
+		RootPanel.get("login").add(panel);
+	}
+	
+	private void removeUserWidget() {
+		RootPanel.get("login").clear();
+	}
+
+	
+	public void startSession(LoginData data) {
+		this.loginData = data;
+		drawProjectList();
+		drawUserWidget();
+	}
+
+	public void endSession()  {
+		this.loginData = null;
+		drawLogin();
+		removeUserWidget();
+	}
+
+
+	
 }

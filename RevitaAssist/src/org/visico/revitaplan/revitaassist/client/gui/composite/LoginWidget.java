@@ -76,7 +76,7 @@ public class LoginWidget extends DataComposite implements ClickHandler{
 				if (data.loginSuccess())
 				{
 					if (data.getSessionId() != null)
-						AppControlMediator.getInstance().startSession(data.getSessionId());
+						AppControlMediator.getInstance().startSession(data);
 				}
 				else
 				{

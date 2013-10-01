@@ -12,6 +12,7 @@ public class LoginData implements Serializable
 	private String email = "JoeDoe@doe.com";
 	private String password = "pass";
 	private String sessionId = null;
+	private String name = "Joe";
 	
 	private boolean loggedin = false;
 	
@@ -53,6 +54,15 @@ public class LoginData implements Serializable
 	public String getSessionId() {
 		return sessionId;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 	
 	
 

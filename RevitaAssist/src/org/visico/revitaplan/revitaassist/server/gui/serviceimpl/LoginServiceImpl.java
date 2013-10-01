@@ -23,6 +23,7 @@ public class LoginServiceImpl extends RemoteServiceServlet implements LoginServi
 			HttpSession session = this.getThreadLocalRequest().getSession(true);
 			session.setAttribute("user", data.getEmail());
 			data.setSessionId(session.getId());
+			data.setName(u.getName());
 		}
 		
 		return data;

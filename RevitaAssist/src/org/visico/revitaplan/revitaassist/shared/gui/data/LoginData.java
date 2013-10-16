@@ -13,11 +13,13 @@ public class LoginData implements Serializable
 	private String password = "pass";
 	private String sessionId = null;
 	private String name = "Joe";
+	private String organization = "Sieman";
+	private String function = "Captain";
+	private String language = "en";
+	private int databaseId;
 	
 	private boolean loggedin = false;
 	
-	
-
 	public boolean isLoggedin() {
 		return loggedin;
 	}
@@ -62,8 +64,41 @@ public class LoginData implements Serializable
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public String getOrganization() {
+		return organization;
+	}
+
+	public void setOrganization(String organization) {
+		this.organization = organization;
+	}
+
+	public String getFunction() {
+		return function;
+	}
+
+	public void setFunction(String function) {
+		this.function = function;
+	}
+
+	public int getDatabaseId() {
+		return databaseId;
+	}
+
+	public void setDatabaseId(int databaseId) {
+		this.databaseId = databaseId;
+	}
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
 	
-	
+
 	
 
 }

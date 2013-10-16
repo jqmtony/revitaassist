@@ -10,11 +10,11 @@ public class ProjectData implements Serializable {
 	 */
 	private static final long serialVersionUID = 1238290418251711033L;
 	
-	public String name = "Test Project";
-	public String stage = "Initiation";
-	public String description = "The test project is the default data " +
+	private String name = "Test Project";
+	private String stage = "Initiation";
+	private String description = "The test project is the default data " +
 			"assignment for the ProjectData class";
-	
+	private int databaseid;
 	
 	public String getName() {
 		return name;
@@ -34,5 +34,12 @@ public class ProjectData implements Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	public int getDatabaseid() {
+		return databaseid;
+	}
+	public void setDatabaseid(int databaseid) {
+		this.databaseid = databaseid;
+	}
+
 	
 }

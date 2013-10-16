@@ -7,4 +7,8 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 public interface LoginServiceAsync {
 	void verifyUser(LoginData data, AsyncCallback<LoginData> callback)
 			throws IllegalArgumentException;
+	void changeUser(LoginData data, AsyncCallback<LoginData> callback) 
+			throws IllegalArgumentException;
+	void changePassword(int userid, String password, AsyncCallback<Integer> callback) 
+			throws IllegalArgumentException;
 }

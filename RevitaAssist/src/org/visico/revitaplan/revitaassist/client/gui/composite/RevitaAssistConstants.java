@@ -1,6 +1,7 @@
 package org.visico.revitaplan.revitaassist.client.gui.composite;
 
 import com.google.gwt.i18n.client.Constants;
+import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.user.client.ui.Button;
 
 
@@ -11,8 +12,14 @@ public interface RevitaAssistConstants extends Constants {
 	  @DefaultStringValue("Password")
 	  String pass();
 
+	  @DefaultStringValue("Change Password")
+	  String changepass();
+	  
 	  @DefaultStringValue("Login")
 	  String login();
+	  
+	  @DefaultStringValue("Logout")
+	  String logout();
 	  
 	  @DefaultStringValue("Login successful!")
 	  String loginsuccess();
@@ -61,4 +68,43 @@ public interface RevitaAssistConstants extends Constants {
 	  
 	  @DefaultStringValue("Select Project")
 	  String selectProject();
+	  
+	  @DefaultStringValue("Account Settings")
+	  String accountSettings();
+	  
+	  @DefaultStringValue("Organization")
+	  String organization();
+
+	  @DefaultStringValue("Function")
+	  String function();
+
+	  @DefaultStringValue("Language")
+	  String language();
+
+	  @DefaultStringValue("English")
+	  String English();
+
+	  @DefaultStringValue("Dutch")
+	  String Dutch();
+
+	  @DefaultStringValue("German")
+	  String German();
+
+	  @DefaultStringValue("Verify Password")
+	  String verify();
+	  
+	  @DefaultStringValue("Change User Settings")
+	  String changeuser();
+
+	  @DefaultStringValue("User Name")
+	  String username();
+
+	  @DefaultStringValue("Changed User Settings")
+	  String changeduser();
+
+	  @DefaultStringValue("Changed Password")
+	  String changedpassword();
+
+	  @DefaultStringValue("Passwords are different")
+	  String differentpasswords();
 }

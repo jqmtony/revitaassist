@@ -8,4 +8,6 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 @RemoteServiceRelativePath("login")
 public interface LoginService extends RemoteService {
 	LoginData verifyUser(LoginData data) throws IllegalArgumentException;
-}
+	LoginData changeUser(LoginData data) throws IllegalArgumentException;
+	Integer changePassword (int userid, String password) throws IllegalArgumentException;
+} 

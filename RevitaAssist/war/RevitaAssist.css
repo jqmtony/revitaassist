@@ -62,7 +62,7 @@ background-position: center;
 left: 0;
 top: 0;
 width: 98%;
-height: 30%;
+height: 15%;
 margin: 1%;
 align: center;
 }
@@ -70,12 +70,13 @@ align: center;
 #login {
 	position: absolute;
 	background-color: #E31B23; 
-	top: 30%;
+	top: 15%;
 	height: 5%;
 	left: 0;
 	width: 100%;
-	
+
 }
+
 #bottombanner {
 position: absolute;
 
@@ -91,7 +92,7 @@ align: center;
 	position: absolute;
 	left: 0;
 	width: 100%;
-	top: 35%;
+	top: 20%;
 	height: 66%;
 	margin: 1%;
 	font-size: 12px;
@@ -144,9 +145,7 @@ h1 {
 }
 
 /** Most GWT widgets already have a style name defined */
-.gwt-DialogBox {
-  width: 400px;
-}
+
 
 .dialogVPanel {
   margin: 5px;
@@ -157,6 +156,13 @@ h1 {
   	padding: 5px;
   	width: 95%;
   	margin: 5px;
+}
+
+.scrollPanel {
+	border: 1px solid;
+  	padding: 5px;
+  	margin: 5px;
+  	float: center;
 }
 
 .serverResponseLabelError {
@@ -181,6 +187,15 @@ h1 {
    	margin-bottom: 5px;
 }
 
+.centerCaption
+{
+	font-size: 100%; 
+   	font-weight: bold;
+   	margin-bottom: 5px;
+   	text-align: center;
+}
+
+
 .informLabel {
 	font-style: italic;
    	margin-bottom: 2px;
@@ -196,6 +211,11 @@ h1 {
 	text-align: center;
 }
 
+.vcenterPanelRight {
+	margin: auto;
+	float: right;
+}
+
 
 .projectInfoTitle {
 	font-weight: bold;
@@ -203,6 +223,16 @@ h1 {
 	line-height: 16px;
 	width: 255px;
 	width: 330px;
+}
+
+.projectInfoDescription {
+font-size: 14px;
+line-height: 18px;
+overflow: hidden;
+white-space: normal;
+text-overflow: ellipsis;
+word-wrap: break-word;
+width: 670px;
 }
 
 .projectInfoStage {
@@ -226,15 +256,19 @@ word-wrap: break-word;
 .projectInfoPanel {
 position: relative;
 height: 75px;
+width: 100%;
 border-bottom: 1px solid #e6e6e6;
 cursor: pointer !important;
 overflow: hidden;
+padding-bottom: 3px;
 }
 
 .projectInfoPanel-selectedPanel {
 background: #ecf0f3;
 color: #1d1d1d;
 }
+
+
 
 .loginPanel {
 	position: relative;
@@ -255,4 +289,60 @@ color: #1d1d1d;
 .StandardTable, th, td
 {
 	border: 10px;
+}
+
+.UserTable
+{
+	border-spacing: 10px;
+}
+
+.UserLabel
+{
+	color: white;
+	font-size: 14px;
+	font-family: caecilia-bold,helvetica,arial,sans-serif;
+	font-weight: thick;
+	
+	-webkit-font-smoothing: antialiased;
+	margin: auto;
+}
+
+
+#style for dialog box
+
+.table-center
+{
+    margin-left            :    auto;
+    margin-right           :    auto;
+}
+
+.popup
+{
+	border: 2px solid #e3e3e3;
+   background: ghostwhite;
+	-moz-box-shadow: threedshadow 3px 3px 12px 0;
+	-webkit-box-shadow: threedshadow 3px 3px 12px 0;
+	box-shadow: threedshadow 3px 3px 12px 0;
+    
+}
+
+
+.login-MenuBar
+{
+   border-left: 2px solid rgba(255, 255, 255, 0.3);
+   background-image: url('menu-dropdown-arrow-white.png');
+   background-repeat: no-repeat;
+   background-position: right;
+}
+
+.login-MenuBar table
+{
+    
+}
+
+.login-MenuBar .gwt-MenuItem
+{
+	cursor: hand; 					
+    color: white;
+    padding:   0px 20px 0px 10px;
 }

@@ -3,53 +3,70 @@ package org.visico.revitaplan.revitaassist.client.gui.composite;
 import org.visico.revitaplan.revitaassist.client.gui.mediator.AppControlMediator;
 import org.visico.revitaplan.revitaassist.shared.gui.data.LoginData;
 
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.core.shared.GWT;
+import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.MenuBar;
+import com.google.gwt.user.client.ui.MenuItem;
 
-public class UserWidget extends DataComposite implements ClickHandler {
+public class UserWidget extends DataComposite {
+	RevitaAssistConstants constants = GWT.create(RevitaAssistConstants.class);
+	
 	AppControlMediator mediator; 
 	
 	HorizontalPanel mainPanel = new HorizontalPanel();
-	
-	Button settings_btn = new Button("Account Settings");
-	Button logout_btn = new Button("Logout");
+	private MenuBar userMenu;
 	
 	
-	public UserWidget(LoginData data, AppControlMediator mediator)
+	public UserWidget(String userName, AppControlMediator mediator)
 	{
 		this.mediator = mediator;
 		
 		mainPanel.setStyleName("UserTable");
 		
-		Label user_lbl = new Label(data.getName());
-		user_lbl.setStyleName("UserLabel");
-		mainPanel.add(user_lbl);
+		userMenu = new MenuBar();
+		userMenu.setStyleName("login-MenuBar");
+		MenuBar subMenu = new MenuBar(true);
 		
-		settings_btn.setStyleName("normalButton");
-		mainPanel.add(settings_btn);
-		settings_btn.addClickHandler(this);
+		userMenu.addItem(userName, subMenu);
 		
-		logout_btn.setStyleName("normalButton");
-		mainPanel.add(logout_btn);
-		logout_btn.addClickHandler(this);
+		MenuItem settings = new MenuItem(constants.accountSettings(), 
+				new Command()
+				{
+					@Override
+					public void execute() {
+						AppControlMediator.getInstance().drawUserSettings();			
+					}
+					
+				});
 		
+		MenuItem changePassword = new MenuItem(constants.changepass(), 
+				new Command()
+				{
+					@Override
+					public void execute() {
+						AppControlMediator.getInstance().drawChangePassword();			
+					}
+					
+				});
+		
+		MenuItem logout = new MenuItem(constants.logout(), 
+				new Command()
+				{
+					@Override
+					public void execute() {
+						AppControlMediator.getInstance().endSession();	
+					}
+					
+				});
+		
+		subMenu.addItem(settings);
+		subMenu.addItem(changePassword);
+		subMenu.addItem(logout);
+		
+		mainPanel.add(userMenu);
 		initWidget(mainPanel);
 	}
 	
-	@Override
-	public void onClick(ClickEvent event) {
-		if (event.getSource() == settings_btn)
-		{
-			
-		}
-		else if (event.getSource() == logout_btn)
-		{
-			AppControlMediator.getInstance().endSession();
-		}
-		
-	}
-
+	
 }

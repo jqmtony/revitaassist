@@ -1,5 +1,7 @@
 package org.visico.revitaplan.revitaassist.client.gui.mediator;
 
+import java.util.ArrayList;
+
 import org.visico.revitaplan.revitaassist.client.gui.composite.AddProjectWidget;
 import org.visico.revitaplan.revitaassist.client.gui.composite.ProjectInfoWidget;
 import org.visico.revitaplan.revitaassist.client.gui.composite.ProjectListWidget;
@@ -11,6 +13,7 @@ import org.visico.revitaplan.revitaassist.shared.gui.data.ProjectData;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
@@ -35,15 +38,7 @@ public class ProjectListMediator {
 		
 		VerticalPanel panel = new VerticalPanel();
 		
-		for (int i=0; i<5; i++)
-		{
-			ProjectInfoWidget w = new ProjectInfoWidget();
-			w.setName("project " + i);
-			w.setStage("Initiation");
-			w.setDescription("stupid test");
-			
-			projectListWidget.addProjectInfoWidget(w);
-		}
+		addProjects();
 		
 		panel.add(projectListWidget);
 		
@@ -53,8 +48,14 @@ public class ProjectListMediator {
 	
 	
 	
-	public void setAddProjectWidget(AddProjectWidget addProjectWidget) {
+	public void setAddProjectWidget() {
+		PopupPanel add_dlg = new PopupPanel();
+		add_dlg.setGlassEnabled(true);
+		add_dlg.setStyleName("popup");
+		AddProjectWidget addProjectWidget = new AddProjectWidget( this );
 		this.addProjectWidget = addProjectWidget;
+		add_dlg.add(addProjectWidget);
+		add_dlg.center();
 	}
 
 	public void setProjectListWidget(ProjectListWidget projectListWidget) {
@@ -83,15 +84,53 @@ public class ProjectListMediator {
 			@Override
 			public void onSuccess(String result) {
 					Window.alert(result);
-				}
+			}
 			
 		};
 				
-		service.addProject(pd, callback);
+		service.addProject(pd, AppControlMediator.getInstance().getLoginData(), callback);
 	}
 
+	public void addProjects()
+	{
+		if (projectListWidget == null)
+			throw new NullPointerException("no active addProjectWidget existsing - project cannot be added");
+	
+		
+		AsyncCallback<ArrayList<ProjectData>> callback = new AsyncCallback<ArrayList<ProjectData>>()
+		{
+
+			@Override
+			public void onFailure(Throwable caught) {
+				
+			}
+
+			@Override
+			public void onSuccess(ArrayList<ProjectData> result) {
+				projectListWidget.clear();
+				for (ProjectData d : result)
+				{
+					ProjectInfoWidget w = new ProjectInfoWidget();
+					w.setName(d.getName());
+					w.setStage(d.getStage());
+					w.setDescription(d.getDescription());
+					projectListWidget.addProjectInfoWidget(w);
+				}
+				
+			}
+			
+		};
+				
+		LoginData ld = AppControlMediator.getInstance().getLoginData();
+		if (ld == null)
+			throw new NullPointerException("no valid user logged in");
+		
+		service.getProjectList(ld.getEmail(), callback);
+	}
 
 	public void removeAddProjectWidget() {
+		PopupPanel parentPanel = (PopupPanel)addProjectWidget.getParent();
+		parentPanel.hide();
 		addProjectWidget = null;
 		
 	}

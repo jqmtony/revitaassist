@@ -13,6 +13,7 @@ import com.google.gwt.user.client.ui.HTMLTable.Cell;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.ListBox;
+import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
@@ -38,8 +39,8 @@ public class ProjectListWidget extends DataComposite implements ClickHandler {
 		mainPanel.setStyleName("centerPanel");
 		ScrollPanel scroller = new ScrollPanel();
 		scroller.setStyleName("boundedVPanel");
-		scroller.setHeight("35em");
-		scroller.setWidth( "50em");
+		scroller.setHeight("400px");
+		scroller.setWidth( "695px");
 		scroller.add(projectGrid);
 		mainPanel.add(scroller);
 		
@@ -82,11 +83,7 @@ public class ProjectListWidget extends DataComposite implements ClickHandler {
 		}
 		else if (event.getSource() == add_btn)
 		{
-			DialogBox add_dlg = new DialogBox();
-			AddProjectWidget addProjectWidget = new AddProjectWidget(mediator);
-			mediator.setAddProjectWidget(addProjectWidget);
-			add_dlg.add(addProjectWidget);
-			add_dlg.show();
+			mediator.setAddProjectWidget();
 		}
 	}
 	
@@ -104,10 +101,17 @@ public class ProjectListWidget extends DataComposite implements ClickHandler {
 	private void styleRow(int row, boolean selected) {
 	    if (row != -1) {
 	      if (selected) {
+	    	projectGrid.getWidget(row, 0).removeStyleName("projectInfoPanel");
 	        projectGrid.getWidget(row, 0).setStyleName("projectInfoPanel-selectedPanel");
 	      } else {
+	    	  projectGrid.getWidget(row, 0).removeStyleName("projectInfoPanel-selectedPanel");
 	    	  projectGrid.getWidget(row, 0).setStyleName("projectInfoPanel");
 	      }
 	    }
 	  }
+
+	public void clear() {
+		projectGrid.clear();
+		
+	}
 }

@@ -10,6 +10,8 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
 @RemoteServiceRelativePath("projectList")
 public interface ProjectListService extends RemoteService {
-	String addProject(ProjectData data) throws IllegalArgumentException;
-	ArrayList<ProjectData> getProjectList(int userid) throws IllegalArgumentException;
+	
+	String addProject(ProjectData data, LoginData login) throws IllegalArgumentException;
+	
+	ArrayList<ProjectData> getProjectList(String userEmail) throws IllegalArgumentException;
 }

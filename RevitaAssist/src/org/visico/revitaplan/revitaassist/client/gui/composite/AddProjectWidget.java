@@ -36,6 +36,10 @@ public class AddProjectWidget extends DataComposite implements ClickHandler {
 	{
 		this.mediator = mediator;
 		
+		Label caption = new Label(constants.addProject());
+		caption.setStyleName("centerCaption");
+		mainPanel.add(caption);
+		
 		HorizontalPanel name_pnl = new HorizontalPanel();
 		name_pnl.setStyleName("boundedVPanel");
 		name_pnl.add(new Label(constants.projectName()));
@@ -49,6 +53,7 @@ public class AddProjectWidget extends DataComposite implements ClickHandler {
 		stage_pnl.add(stage_lbl);
 		
 		initiationStage_rbt = new RadioButton("stageSelectGroup", constants.initiationStage());
+		initiationStage_rbt.setValue(true);
 		conceptionStage_rbt = new RadioButton("stageSelectGroup", constants.conceptionStage());;
 		specificationStage_rbt = new RadioButton("stageSelectGroup", constants.specificationStage());;
 		projectmgtStage_rbt = new RadioButton("stageSelectGroup", constants.projectmgtStage());;
@@ -88,14 +93,13 @@ public class AddProjectWidget extends DataComposite implements ClickHandler {
 		{
 			mediator.addProject();
 			mediator.removeAddProjectWidget();
+			DialogBox parent = (DialogBox)(this.getParent().getParent());
+			parent.hide();
+			mediator.addProjects();
+			
 		}
 		else if (event.getSource() == cancel_btn)
 		{
-			if (this.getParent().getParent() instanceof DialogBox)
-			{
-				DialogBox parent = (DialogBox)(this.getParent().getParent());
-				parent.hide();
-			}
 			mediator.removeAddProjectWidget();
 		}
 	}

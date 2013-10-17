@@ -27,7 +27,8 @@ create table if not exists PROJECT
 	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	name VARCHAR(250),
 	stage VARCHAR(250),
-	description VARCHAR(1000)
+	description VARCHAR(1000),
+	archive BOOLEAN DEFAULT false
 );
 
 create table if not exists USERPROJECTREL

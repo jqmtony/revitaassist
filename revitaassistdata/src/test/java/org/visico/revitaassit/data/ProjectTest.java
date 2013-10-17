@@ -40,10 +40,14 @@ public class ProjectTest {
     	Set<Project> s = new HashSet<Project>();
     	s.add(project2);
     	u.setProjects(s);
+    	u.setEmail("t.t@t.com");
     	UserDao udao = new UserDao();
     	udao.save(u);
     	
     	Set<Project> projects = dao.findByUserId(u.getId());
+    	assertEquals(projects.iterator().next().getName(), "Timo");
+    	
+    	projects = dao.findByUserEmail(u.getEmail());
     	assertEquals(projects.iterator().next().getName(), "Timo");
     	
     	/** delete **/

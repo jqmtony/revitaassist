@@ -95,7 +95,7 @@ public class AddProjectWidget extends DataComposite implements ClickHandler {
 			mediator.removeAddProjectWidget();
 			DialogBox parent = (DialogBox)(this.getParent().getParent());
 			parent.hide();
-			mediator.addProjects();
+			mediator.fillProjectList();
 			
 		}
 		else if (event.getSource() == cancel_btn)

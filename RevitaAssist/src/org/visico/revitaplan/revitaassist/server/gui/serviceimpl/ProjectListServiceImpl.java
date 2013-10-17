@@ -61,6 +61,16 @@ public class ProjectListServiceImpl extends RemoteServiceServlet implements Proj
 		return projectdata;
 	}
 
+	@Override
+	public Boolean archiveProject(int selectedProject)
+			throws IllegalArgumentException {
+		ProjectDao projectDao = new ProjectDao();
+		Project p = projectDao.findById(selectedProject);
+		p.setArchive(true);
+		projectDao.update(p);
+		return true;
+	}
+
 	
 
 }

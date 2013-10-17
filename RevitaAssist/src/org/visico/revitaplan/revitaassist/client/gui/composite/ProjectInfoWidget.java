@@ -22,6 +22,8 @@ public class ProjectInfoWidget extends DataComposite implements ClickHandler {
 	Label stage_lbl;
 	Label description_lbl;
 	
+	int projectId;
+	
 
 	public ProjectInfoWidget()
 	{
@@ -64,5 +66,18 @@ public class ProjectInfoWidget extends DataComposite implements ClickHandler {
 		
 		
 	}
+
+
+	public int getProjectId() {
+		return projectId;
+	}
+
+
+	public void setProjectId(int projectId) {
+		this.projectId = projectId;
+	}
+
+
+	
 
 }

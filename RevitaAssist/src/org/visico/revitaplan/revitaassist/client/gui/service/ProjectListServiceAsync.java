@@ -13,4 +13,7 @@ public interface ProjectListServiceAsync {
 	
 	 void getProjectList(String userEmail, AsyncCallback<ArrayList<ProjectData>> callback) 
 			 throws IllegalArgumentException;
+
+	void archiveProject(int selectedProject, AsyncCallback<Boolean> callback) 
+			throws IllegalArgumentException;
 }

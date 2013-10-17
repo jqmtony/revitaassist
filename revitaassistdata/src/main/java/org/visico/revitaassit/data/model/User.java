@@ -1,6 +1,7 @@
 package org.visico.revitaassit.data.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -49,7 +50,7 @@ public class User implements Serializable {
 	@JoinTable(name="USERPROJECTREL", joinColumns = {@JoinColumn(name="userid")},
 		inverseJoinColumns = {@JoinColumn(name="projectid")}
 	)
-	Set<Project> projects;
+	Set<Project> projects = new HashSet<Project>();
 
 	public int getId() {
 		return id;

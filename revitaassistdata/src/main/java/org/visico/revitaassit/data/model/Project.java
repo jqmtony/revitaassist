@@ -2,12 +2,18 @@ package org.visico.revitaassit.data.model;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
+import java.util.HashSet;
+import java.util.Set;
+
 
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -26,7 +32,15 @@ public class Project {
 	
 	@Column(name="description")
 	String description;
+	
+	@Column(name="archive")
+	boolean archive;
 
+	@ManyToMany
+	@JoinTable(name="USERPROJECTREL", joinColumns = {@JoinColumn(name="projectid")},
+		inverseJoinColumns = {@JoinColumn(name="userid")}
+	)
+	Set<User> users = new HashSet<User>();
 	
 	
 	public int getId() {
@@ -61,5 +75,20 @@ public class Project {
 		this.description = description;
 	}
 
-	
+	public Set<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(Set<User> users) {
+		this.users = users;
+	}
+
+	public boolean isArchive() {
+		return archive;
+	}
+
+	public void setArchive(boolean archive) {
+		this.archive = archive;
+	}
+
 }

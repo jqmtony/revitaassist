@@ -28,7 +28,7 @@ public class ProjectListWidget extends DataComposite implements ClickHandler {
 	private Grid projectGrid = new Grid(0,1);
 	private Button add_btn = new Button(constants.addProject());
 	private Button select_btn = new Button(constants.selectProject());
-	private Button delete_btn = new Button(constants.deleteProject());
+	private Button archive_btn = new Button(constants.archiveProject());
 	
 	private int selectedRow = -1;
 	
@@ -53,9 +53,9 @@ public class ProjectListWidget extends DataComposite implements ClickHandler {
 		select_btn.setWidth("10em");
 		btn_pnl.add(select_btn);
 		select_btn.addClickHandler(this);
-		btn_pnl.add(delete_btn);
-		delete_btn.setWidth("10em");
-		delete_btn.addClickHandler(this);
+		btn_pnl.add(archive_btn);
+		archive_btn.setWidth("10em");
+		archive_btn.addClickHandler(this);
 		mainPanel.add(btn_pnl);
 		
 		projectGrid.addClickHandler(this);
@@ -85,6 +85,12 @@ public class ProjectListWidget extends DataComposite implements ClickHandler {
 		{
 			mediator.setAddProjectWidget();
 		}
+		else if (event.getSource() == archive_btn)
+		{
+			if (Window.confirm(constants.reallyArchive()))
+				mediator.archiveProject();
+			mediator.fillProjectList();
+		}
 	}
 	
 
@@ -113,5 +119,16 @@ public class ProjectListWidget extends DataComposite implements ClickHandler {
 	public void clear() {
 		projectGrid.clear();
 		
+	}
+
+	public int getSelectedProject() {
+		ProjectInfoWidget widget = (ProjectInfoWidget)projectGrid.getWidget(selectedRow, 0);
+		return widget.getProjectId();
+		
+	}
+	
+	public void resetSelectedRow()
+	{
+		selectedRow = -1;
 	}
 }

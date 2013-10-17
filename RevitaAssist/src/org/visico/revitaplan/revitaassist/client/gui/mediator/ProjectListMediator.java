@@ -38,7 +38,7 @@ public class ProjectListMediator {
 		
 		VerticalPanel panel = new VerticalPanel();
 		
-		addProjects();
+		fillProjectList();
 		
 		panel.add(projectListWidget);
 		
@@ -91,11 +91,12 @@ public class ProjectListMediator {
 		service.addProject(pd, AppControlMediator.getInstance().getLoginData(), callback);
 	}
 
-	public void addProjects()
+	public void fillProjectList()
 	{
 		if (projectListWidget == null)
 			throw new NullPointerException("no active addProjectWidget existsing - project cannot be added");
-	
+		projectListWidget.clear();
+		projectListWidget.resetSelectedRow();
 		
 		AsyncCallback<ArrayList<ProjectData>> callback = new AsyncCallback<ArrayList<ProjectData>>()
 		{
@@ -114,6 +115,7 @@ public class ProjectListMediator {
 					w.setName(d.getName());
 					w.setStage(d.getStage());
 					w.setDescription(d.getDescription());
+					w.setProjectId(d.getDatabaseid());
 					projectListWidget.addProjectInfoWidget(w);
 				}
 				
@@ -132,6 +134,30 @@ public class ProjectListMediator {
 		PopupPanel parentPanel = (PopupPanel)addProjectWidget.getParent();
 		parentPanel.hide();
 		addProjectWidget = null;
+		
+	}
+
+	public void archiveProject() {
+		if (projectListWidget == null)
+			throw new NullPointerException("no active addProjectWidget existsing - project cannot be archived");
+	
+		
+		AsyncCallback<Boolean> callback = new AsyncCallback<Boolean>()
+		{
+
+			@Override
+			public void onFailure(Throwable caught) {
+				
+			}
+
+			@Override
+			public void onSuccess(Boolean result) {
+				
+			}
+			
+		};
+				
+		service.archiveProject(projectListWidget.getSelectedProject(), callback);
 		
 	}
 	

@@ -65,7 +65,7 @@ public class ProjectDao {
 	public Project findById(int id) {
 		Session session = sessionFactory.getCurrentSession();
 	    session.beginTransaction();
-	    Query q = session.createQuery("from Project where id= :id");
+	    Query q = session.createQuery("from Project where id= :id and archive=false");
 	    q.setInteger("id", id);
 	    List<Project> projects = (List<Project>)q.list();
 	    session.getTransaction().commit();
@@ -81,8 +81,11 @@ public class ProjectDao {
 	    Set<Project> projects = new HashSet<Project>();
 	    for (Project p : u.getProjects())
 	    {
-	    	Hibernate.initialize(p);
-	    	projects.add(p);
+	    	if (p.isArchive() != true)
+	    	{
+		    	Hibernate.initialize(p);
+		    	projects.add(p);
+	    	}
 	    }
 	     
 	    session.getTransaction().commit();
@@ -98,5 +101,26 @@ public class ProjectDao {
 	    q.setInteger("user", user);
 	    q.executeUpdate();
 	    session.getTransaction().commit();
+	}
+
+	public Set<Project> findByUserEmail(String userEmail) {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+	    Query q = session.createQuery("from User u where email= :mail");
+	    q.setString("mail", userEmail);
+	    User u = (User)q.list().get(0);
+	    Set<Project> projects = new HashSet<Project>();
+	    for (Project p : u.getProjects())
+	    {
+	    	if (p.isArchive() != true)
+	    	{
+		    	Hibernate.initialize(p);
+		    	projects.add(p);
+	    	}
+	    }
+	     
+	    session.getTransaction().commit();
+	    return projects;
+		
 	}
 }

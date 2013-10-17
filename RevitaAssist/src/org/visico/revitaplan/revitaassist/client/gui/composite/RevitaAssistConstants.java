@@ -107,4 +107,11 @@ public interface RevitaAssistConstants extends Constants {
 
 	  @DefaultStringValue("Passwords are different")
 	  String differentpasswords();
+
+	  @DefaultStringValue("Archive")
+	  String archiveProject();
+
+	  @DefaultStringValue("Are you sure you want to archive the selected project? " +
+	  		"After archiving it can only be restored by the website manager!")
+	  String reallyArchive();
 }

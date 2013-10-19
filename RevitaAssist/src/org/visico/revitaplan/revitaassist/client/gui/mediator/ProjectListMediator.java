@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import org.visico.revitaplan.revitaassist.client.gui.composite.AddProjectWidget;
 import org.visico.revitaplan.revitaassist.client.gui.composite.ProjectInfoWidget;
 import org.visico.revitaplan.revitaassist.client.gui.composite.ProjectListWidget;
-import org.visico.revitaplan.revitaassist.client.gui.service.ProjectListService;
-import org.visico.revitaplan.revitaassist.client.gui.service.ProjectListServiceAsync;
+import org.visico.revitaplan.revitaassist.client.gui.service.ProjectService;
+import org.visico.revitaplan.revitaassist.client.gui.service.ProjectServiceAsync;
 import org.visico.revitaplan.revitaassist.shared.gui.data.LoginData;
-import org.visico.revitaplan.revitaassist.shared.gui.data.ProjectData;
+import org.visico.revitaplan.revitaassist.shared.gui.data.ProjectSummaryData;
 
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.user.client.Window;
@@ -20,7 +20,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 public class ProjectListMediator {
 
 	
-	private ProjectListServiceAsync service = GWT.create(ProjectListService.class);
+	private ProjectServiceAsync service = GWT.create(ProjectService.class);
 	
 	private AddProjectWidget addProjectWidget = null;
 	private ProjectListWidget projectListWidget = null;
@@ -68,7 +68,7 @@ public class ProjectListMediator {
 		if (projectListWidget == null)
 			throw new NullPointerException("no active addProjectWidget existsing - project cannot be added");
 	
-		ProjectData pd = new ProjectData();
+		ProjectSummaryData pd = new ProjectSummaryData();
 		pd.setName(addProjectWidget.getProjectName());
 		pd.setDescription(addProjectWidget.getDescription());
 		pd.setStage(addProjectWidget.getStage());
@@ -98,7 +98,7 @@ public class ProjectListMediator {
 		projectListWidget.clear();
 		projectListWidget.resetSelectedRow();
 		
-		AsyncCallback<ArrayList<ProjectData>> callback = new AsyncCallback<ArrayList<ProjectData>>()
+		AsyncCallback<ArrayList<ProjectSummaryData>> callback = new AsyncCallback<ArrayList<ProjectSummaryData>>()
 		{
 
 			@Override
@@ -107,9 +107,9 @@ public class ProjectListMediator {
 			}
 
 			@Override
-			public void onSuccess(ArrayList<ProjectData> result) {
+			public void onSuccess(ArrayList<ProjectSummaryData> result) {
 				projectListWidget.clear();
-				for (ProjectData d : result)
+				for (ProjectSummaryData d : result)
 				{
 					ProjectInfoWidget w = new ProjectInfoWidget();
 					w.setName(d.getName());
@@ -158,6 +158,11 @@ public class ProjectListMediator {
 		};
 				
 		service.archiveProject(projectListWidget.getSelectedProject(), callback);
+		
+	}
+
+	public void projectDetailWidget() {
+		AppControlMediator.getInstance().drawProjectDetail(projectListWidget.getSelectedProject());
 		
 	}
 	

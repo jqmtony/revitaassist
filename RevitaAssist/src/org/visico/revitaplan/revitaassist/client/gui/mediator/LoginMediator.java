@@ -1,8 +1,8 @@
 package org.visico.revitaplan.revitaassist.client.gui.mediator;
 
 import org.visico.revitaplan.revitaassist.client.gui.composite.LoginWidget;
-import org.visico.revitaplan.revitaassist.client.gui.service.ProjectListService;
-import org.visico.revitaplan.revitaassist.client.gui.service.ProjectListServiceAsync;
+import org.visico.revitaplan.revitaassist.client.gui.service.ProjectService;
+import org.visico.revitaplan.revitaassist.client.gui.service.ProjectServiceAsync;
 
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.user.client.ui.RootPanel;

@@ -2,7 +2,7 @@ package org.visico.revitaplan.revitaassist.client.gui.mediator;
 
 import org.visico.revitaplan.revitaassist.client.gui.composite.AddProjectWidget;
 import org.visico.revitaplan.revitaassist.client.gui.composite.ProjectInfoWidget;
-import org.visico.revitaplan.revitaassist.shared.gui.data.ProjectData;
+import org.visico.revitaplan.revitaassist.shared.gui.data.ProjectSummaryData;
 
 public class ProjectSiteMediator {
 	static ProjectSiteMediator instance = null;
@@ -18,7 +18,7 @@ public class ProjectSiteMediator {
 	}
 	
 	
-	ProjectData dataItem;
+	ProjectSummaryData dataItem;
 	
 	// here add the widgets that need to be updated
 	ProjectInfoWidget projectInfoWidget;
@@ -29,7 +29,7 @@ public class ProjectSiteMediator {
 		
 	}
 	
-	public void setProjectData(ProjectData data)
+	public void setProjectData(ProjectSummaryData data)
 	{
 		dataItem = data;
 	}

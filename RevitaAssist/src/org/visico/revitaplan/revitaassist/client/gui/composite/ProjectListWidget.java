@@ -91,6 +91,10 @@ public class ProjectListWidget extends DataComposite implements ClickHandler {
 				mediator.archiveProject();
 			mediator.fillProjectList();
 		}
+		else if (event.getSource() == select_btn)
+		{
+			mediator.projectDetailWidget();
+		}
 	}
 	
 

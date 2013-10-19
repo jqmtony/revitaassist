@@ -1,16 +1,15 @@
 package org.visico.revitaplan.revitaassist.client.gui.mediator;
 
-import org.visico.revitaplan.revitaassist.client.gui.composite.AddProjectWidget;
+
 import org.visico.revitaplan.revitaassist.client.gui.composite.ChangePasswordWidget;
 import org.visico.revitaplan.revitaassist.client.gui.composite.EditAccountWidget;
 import org.visico.revitaplan.revitaassist.client.gui.composite.LoginWidget;
+import org.visico.revitaplan.revitaassist.client.gui.composite.ProjectDetailWidget;
 import org.visico.revitaplan.revitaassist.client.gui.composite.ProjectListWidget;
 import org.visico.revitaplan.revitaassist.client.gui.composite.RevitaAssistConstants;
 import org.visico.revitaplan.revitaassist.client.gui.composite.UserWidget;
 import org.visico.revitaplan.revitaassist.client.gui.service.LoginService;
 import org.visico.revitaplan.revitaassist.client.gui.service.LoginServiceAsync;
-import org.visico.revitaplan.revitaassist.client.gui.service.ProjectListService;
-import org.visico.revitaplan.revitaassist.client.gui.service.ProjectListServiceAsync;
 import org.visico.revitaplan.revitaassist.shared.gui.data.LoginData;
 
 import com.google.gwt.core.shared.GWT;
@@ -74,7 +73,13 @@ public class AppControlMediator {
 		ProjectListMediator mediator = new ProjectListMediator("Dummy");
 		ProjectListWidget plw = new ProjectListWidget(mediator);
 		mediator.setProjectListWidget(plw);
-		
+	}
+	
+	public void drawProjectDetail(int projectId)
+	{
+		ProjectDetailMediator mediator = new ProjectDetailMediator(projectId);
+		ProjectDetailWidget pdw = new ProjectDetailWidget(mediator);
+		mediator.setProjectDetailWidget(pdw);
 	}
 
 	private void drawUserWidget() {

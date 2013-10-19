@@ -16,6 +16,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 @Entity
 @Table (name = "PROJECT")
 public class Project {
@@ -37,6 +40,7 @@ public class Project {
 	boolean archive;
 
 	@ManyToMany
+	@Fetch(FetchMode.SELECT)
 	@JoinTable(name="USERPROJECTREL", joinColumns = {@JoinColumn(name="projectid")},
 		inverseJoinColumns = {@JoinColumn(name="userid")}
 	)

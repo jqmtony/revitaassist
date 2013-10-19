@@ -12,6 +12,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
@@ -47,6 +51,7 @@ public class User implements Serializable {
 	String function;
 	
 	@ManyToMany
+	@Fetch(FetchMode.SELECT)
 	@JoinTable(name="USERPROJECTREL", joinColumns = {@JoinColumn(name="userid")},
 		inverseJoinColumns = {@JoinColumn(name="projectid")}
 	)

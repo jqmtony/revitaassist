@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -13,8 +14,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -50,8 +49,7 @@ public class User implements Serializable {
 	@Column(name="function")
 	String function;
 	
-	@ManyToMany
-	@Fetch(FetchMode.SELECT)
+	@ManyToMany (fetch = FetchType.EAGER)
 	@JoinTable(name="USERPROJECTREL", joinColumns = {@JoinColumn(name="userid")},
 		inverseJoinColumns = {@JoinColumn(name="projectid")}
 	)

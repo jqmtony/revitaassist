@@ -9,6 +9,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -16,8 +17,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table (name = "PROJECT")
@@ -39,8 +38,7 @@ public class Project {
 	@Column(name="archive")
 	boolean archive;
 
-	@ManyToMany
-	@Fetch(FetchMode.SELECT)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name="USERPROJECTREL", joinColumns = {@JoinColumn(name="projectid")},
 		inverseJoinColumns = {@JoinColumn(name="userid")}
 	)

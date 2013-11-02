@@ -69,6 +69,10 @@ public class ProjectDao {
 	    q.setInteger("id", id);
 	    List<Project> projects = (List<Project>)q.list();
 	    session.getTransaction().commit();
+	    
+	    if (projects.isEmpty())
+	    	return null;
+	    
 		return (Project)projects.get(0);
 	}
 	

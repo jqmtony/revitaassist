@@ -2,7 +2,6 @@ package org.visico.revitaassit.data.dao;
 
 import java.util.List;
 
-import org.hibernate.NonUniqueObjectException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -61,7 +60,8 @@ public class UserDao {
 	    session.beginTransaction();
 	    Query q = session.createQuery("from User where id= :id");
 	    q.setInteger("id", id);
-	    List<User> users = (List<User>)q.list();
+	    @SuppressWarnings("unchecked")
+		List<User> users = (List<User>)q.list();
 	    session.getTransaction().commit();
 		return (User)users.get(0);
 	}
@@ -71,7 +71,8 @@ public class UserDao {
 	    session.beginTransaction();
 	    Query q = session.createQuery("from User where email= :email");
 	    q.setString("email", email);
-	    List<User> users = (List<User>)q.list();
+	    @SuppressWarnings("unchecked")
+		List<User> users = (List<User>)q.list();
 	    session.getTransaction().commit();
 	    if (users.isEmpty())
 	    	return null;

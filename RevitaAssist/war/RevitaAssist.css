@@ -77,23 +77,12 @@ align: center;
 
 }
 
-#bottombanner {
-position: absolute;
-
-left: 0;
-top: 94%;
-width: 100%;
-height: 10%;
-margin: 2%;
-align: center;
-}
-
 #content {
 	position: absolute;
 	left: 0;
 	width: 100%;
 	top: 20%;
-	height: 66%;
+	height: 80%;
 	margin: 1%;
 	font-size: 12px;
 	overflow: auto;
@@ -163,6 +152,13 @@ h1 {
   	padding: 5px;
   	margin: 5px;
   	float: center;
+}
+
+.centeredPanel
+{
+	padding: 5px;
+	width: 95%;
+	margin: auto;
 }
 
 .serverResponseLabelError {
@@ -240,7 +236,7 @@ font-size: 11px;
 line-height: 16px;
 font-weight: bold;
 margin-right: 4px;
-color: #4a8db8;
+color: #F18E00;
 -webkit-font-smoothing: antialiased;
 }
 
@@ -345,4 +341,25 @@ color: #1d1d1d;
 	cursor: hand; 					
     color: white;
     padding:   0px 20px 0px 10px;
+}
+
+.projectDetail
+{
+	width: 750px;
+	height: 600px;
+	border: 1px solid;
+  	padding: 5px;
+  	margin: 5px;
+  	float: center;
+}
+
+.backButton
+{
+	width: 100%;
+	height: 100%;
+	background-image: url('left.png');
+   	background-repeat: no-repeat;
+   	background-size: 100% 100%;
+   	padding: 15px;
+   	float: center;
 }

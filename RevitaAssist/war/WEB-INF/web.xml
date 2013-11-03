@@ -27,12 +27,12 @@
   </servlet-mapping>
   
    <servlet>
-    <servlet-name>projectListServlet</servlet-name>
-    <servlet-class>org.visico.revitaplan.revitaassist.server.gui.serviceimpl.ProjectListServiceImpl</servlet-class>
+    <servlet-name>projectServlet</servlet-name>
+    <servlet-class>org.visico.revitaplan.revitaassist.server.gui.serviceimpl.ProjectServiceImpl</servlet-class>
   </servlet>
   
   <servlet-mapping>
-    <servlet-name>projectListServlet</servlet-name>
+    <servlet-name>projectServlet</servlet-name>
     <url-pattern>/revitaassist/projectList</url-pattern>
   </servlet-mapping>
   

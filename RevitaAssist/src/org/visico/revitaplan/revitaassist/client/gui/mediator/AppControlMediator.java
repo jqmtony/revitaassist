@@ -193,6 +193,12 @@ public class AppControlMediator {
 		parentPanel.hide();
 		changePasswordWidget = null;	
 	}
+
+
+	public void startMaturityAssessment() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 	

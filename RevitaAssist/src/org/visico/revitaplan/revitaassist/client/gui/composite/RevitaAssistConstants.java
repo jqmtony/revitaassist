@@ -114,4 +114,19 @@ public interface RevitaAssistConstants extends Constants {
 	  @DefaultStringValue("Are you sure you want to archive the selected project? " +
 	  		"After archiving it can only be restored by the website manager!")
 	  String reallyArchive();
+
+	  @DefaultStringValue("Back to Project List")
+	  String back();
+
+	  @DefaultStringValue("Assess Maturity")
+	  String maturity();
+
+	  @DefaultStringValue("Stakeholder Analysis")
+	  String stakeholder();
+	  
+	  @DefaultStringValue("Formalize Process")
+	  String process();
+	  
+	  @DefaultStringValue("Sketch Planning")
+	  String sketch();
 }
